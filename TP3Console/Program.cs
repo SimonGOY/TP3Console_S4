@@ -20,15 +20,46 @@ namespace TP3Console
                 }
             }*/
 
-            using (var ctx = new FilmsDBContext())
+            /*using (var ctx = new FilmsDBContext())
             {
                 //Chargement de la catégorie Action, des films de cette catégorie et des avis
                 Categorie categorieAction = ctx.Categories
                 .Include(c => c.Films)
                 .ThenInclude(f => f.Avis)
                 .First(c => c.Nom == "Action");
-            }
+            }*/
+
+            Exo2Q2();
+
             Console.ReadKey();
+        }
+        public static void Exo2Q1()
+        {
+            var ctx = new FilmsDBContext();
+            foreach (var film in ctx.Films)
+            {
+                Console.WriteLine(film.ToString());
+            }
+        }
+
+        //Autre possibilité :
+        public static void Exo2Q1Bis()
+        {
+            var ctx = new FilmsDBContext();
+            //Pour que cela marche, il faut que la requête envoie les mêmes noms de colonnes que les classes c#.
+            var films = ctx.Films.FromSqlRaw("SELECT * FROM film");
+            foreach (var film in films)
+            {
+                Console.WriteLine(film.ToString());
+            }
+        }
+        public static void Exo2Q2()
+        {
+            var ctx = new FilmsDBContext();
+            foreach (var utilisateur in ctx.Utilisateurs)
+            {
+                Console.WriteLine(utilisateur.Email);
+            }
         }
 
     }
