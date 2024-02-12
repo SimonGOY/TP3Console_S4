@@ -14,7 +14,9 @@ namespace TP3Console.Models.EntityFramework
             Avis = new HashSet<Avi>();
         }
 
-        [Key]
+        private ICollection<Film> films;
+
+         [Key]
         [Column("id")]
         public int Id { get; set; }
         [Column("nom")]

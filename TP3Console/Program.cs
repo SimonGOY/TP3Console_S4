@@ -7,6 +7,19 @@ namespace TP3Console
     {
         static void Main(string[] args)
         {
+            /*using (var ctx = new FilmsDBContext())
+            {
+                //Chargement de la catégorie Action
+                Categorie categorieAction = ctx.Categories.First(c => c.Nom == "Action");
+                Console.WriteLine("Categorie : " + categorieAction.Nom);
+                Console.WriteLine("Films : ");
+                //Chargement des films de la catégorie Action.
+                foreach (var film in categorieAction.Films) // lazy loading initiated
+                {
+                    Console.WriteLine(film.Nom);
+                }
+            }*/
+
             using (var ctx = new FilmsDBContext())
             {
                 //Chargement de la catégorie Action, des films de cette catégorie et des avis
